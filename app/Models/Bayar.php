@@ -67,7 +67,7 @@ class Bayar extends Model
     public static function generateId()
     {
         $count = self::count() + 1;
-        return 'BY' . str_pad($count, 5, '0', STR_PAD_LEFT);
+        return 'BYR' . str_pad($count, 5, '0', STR_PAD_LEFT);
     }
 
     public function daftar()

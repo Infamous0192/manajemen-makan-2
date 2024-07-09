@@ -59,6 +59,7 @@
                                                 <th>Jenis Bayar</th>
                                                 <th>Jumlah</th>
                                                 <th>Status</th>
+                                                <th>Bukti Bayar</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -74,16 +75,36 @@
                                                     <td>{{ $data->tanggal_bayar }}</td>
                                                     <td>{{ $data->jenis_bayar }}</td>
                                                     <td>{{ $data->jumlah }}</td>
-                                                    <td>{{ $data->status }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.bayar.edit', $data->id_bayar) }}"
-                                                            class="btn btn-warning">Edit</a>
-                                                        <form action="{{ route('admin.bayar.destroy', $data->id_bayar) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                        @if ($data->status === 'terbayar')
+                                                            <div class="badge badge-success">
+                                                                Terbayar
+                                                            </div>
+                                                        @else
+                                                            <div class="badge badge-danger">
+                                                                Belum
+                                                            </div>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data->bukti_transfer)
+                                                            <a href="{{ Storage::url($data->bukti_transfer) }}"
+                                                                target="_blank">View</a>
+                                                        @else
+                                                            No File
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data->status !== 'terbayar')
+                                                            <form
+                                                                action="{{ route('admin.bayar.confirm', $data->id_bayar) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <button type="submit"
+                                                                    class="btn btn-sm btn-primary">Konfirmasi</button>
+                                                            </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

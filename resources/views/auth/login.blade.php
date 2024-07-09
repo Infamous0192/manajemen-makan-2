@@ -26,9 +26,6 @@
                 </button>
             </div>
         </form>
-        <div class="mt-4 mb-3 text-center">
-            <a href="/">Login sebagai Mahasiswa</a>
-        </div>
     </div>
 </div>
 @endsection

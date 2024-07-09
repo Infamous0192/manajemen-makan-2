@@ -24,20 +24,6 @@ class Daftar extends Model
     protected $primaryKey = 'id_daftar';
 
     /**
-     * The "type" of the auto-incrementing ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'int';
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = true;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

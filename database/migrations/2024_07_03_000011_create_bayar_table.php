@@ -25,8 +25,12 @@ class CreateBayarTable extends Migration
             $table->enum('jenis_bayar', ['cash', 'transfer']);
             $table->integer('jumlah');
             $table->enum('status', ['terbayar', 'belum']);
+            $table->string('bukti_transfer')->nullable(); // New column for file upload
             $table->foreign('id_daftar')->references('id_daftar')->on('daftar')->cascadeOnDelete();
             $table->foreign('id_jenazah')->references('id_jenazah')->on('jenazah')->cascadeOnDelete();
+            $table->foreign('id_lokasi')->references('id_lokasi')->on('lokasi')->cascadeOnDelete();
+            $table->foreign('id_biaya')->references('id_biaya')->on('biaya')->cascadeOnDelete();
+            $table->foreign('id_harga')->references('id_harga')->on('harga_makam')->cascadeOnDelete();
 
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ class BayarSeeder extends Seeder
         DB::table('bayar')->insert([
 
             [
-                'id_bayar' => 'BY001',
+                'id_bayar' => 'BYR001',
                 'id_daftar' => 'DF001',
                 'id_jenazah' => 'JZ001',
                 'id_lokasi' => 'LK001',

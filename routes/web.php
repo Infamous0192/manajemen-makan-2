@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\Admin;
-use App\Http\Controllers\Mahasiswa;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,13 @@ use App\Http\Controllers\Mahasiswa;
 |
 */
 
-Route::redirect('/', 'admin');
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/about', 'index');
+    Route::get('/location', 'location');
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'submit')->name('register.submit');
+});
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [Admin\AdminController::class, 'index'])->name('dashboard');
@@ -33,28 +39,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('proses_makam', Admin\ProsesMakamController::class)->parameter('proses_makam', 'proses_makam');
     Route::resource('rawat', Admin\RawatController::class)->parameter('rawat', 'rawat');
 
-    // Route::resource('prodi', Admin\ProdiController::class);
-    // Route::resource('gedung', Admin\GedungController::class);
-    // Route::resource('ruangan', Admin\RuanganController::class);
-    // Route::resource('mahasiswa', Admin\MahasiswaController::class);
-    // Route::resource('dosen', Admin\DosenController::class);
-    // Route::resource('tahun_akademik', Admin\TahunAkademikController::class);
-
-    // Route::post('/tahun_akademik/upload', [Admin\TahunAkademikController::class, 'upload'])->name('tahun_akademik.upload');
-
-    // Route::resource('matakuliah', Admin\MatakuliahController::class);
-    // Route::controller(Admin\MatakuliahController::class)->prefix('matakuliah')->name('matakuliah.')->group(function () {
-    //     Route::put('{matakuliah}/dosen', 'addDosen')->name('addDosen');
-    //     Route::delete('{matakuliah}/dosen', 'removeDosen')->name('removeDosen');
-    //     Route::put('{matakuliah}/nilai', 'nilai')->name('nilai');
-    // });
-
-    // Route::prefix('krs')->name('krs.')->controller(Admin\KrsController::class)->group(function () {
-    //     Route::get('/', 'index')->name('index');
-    //     Route::get('/{krs}', 'show')->name('show');
-    //     Route::patch('/{krs}/accept', 'accept')->name('accept');
-    //     Route::patch('/{krs}/reject', 'reject')->name('reject');
-    // });
+    Route::patch('bayar/{id}/confirm', [Admin\BayarController::class, 'confirm'])->name('bayar.confirm');
 });
 
 Route::controller(Controllers\AuthController::class)->group(function () {

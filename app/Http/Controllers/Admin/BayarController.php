@@ -132,4 +132,18 @@ class BayarController extends Controller
         $bayar->delete();
         return redirect()->route('admin.bayar.index')->with('success', 'Bayar deleted successfully.');
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateBayarRequest  $request
+     * @param  \App\Models\Bayar  $bayar
+     * @return \Illuminate\Http\Response
+     */
+    public function confirm(Bayar $bayar)
+    {
+        $bayar->update(['status' => 'terbayar']);
+
+        return redirect()->route('admin.bayar.index')->with('success', 'Bayar updated successfully.');
+    }
 }
