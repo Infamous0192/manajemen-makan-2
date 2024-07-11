@@ -39,7 +39,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('proses_makam', Admin\ProsesMakamController::class)->parameter('proses_makam', 'proses_makam');
     Route::resource('rawat', Admin\RawatController::class)->parameter('rawat', 'rawat');
 
-    Route::patch('bayar/{id}/confirm', [Admin\BayarController::class, 'confirm'])->name('bayar.confirm');
+    Route::patch('bayar/{bayar}/confirm', [Admin\BayarController::class, 'confirm'])->name('bayar.confirm');
 });
 
 Route::controller(Controllers\AuthController::class)->group(function () {
