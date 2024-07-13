@@ -59,6 +59,10 @@
                 <a class="nav-link" href="{{ route('admin.pengeluaran.index') }}"><i class="fas fa-th-large"></i>
                     <span>Pengeluaran</span></a>
             </li>
+            <li class="{{ Request::is('admin/rawatBulanan*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.rawatBulanan.index') }}"><i class="fas fa-th-large"></i>
+                    <span>Rawat Bulanan</span></a>
+            </li>
         </ul>
     </aside>
 </div>

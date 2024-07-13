@@ -10,18 +10,19 @@ use App\Models\Daftar;
 use App\Models\HargaMakam;
 use App\Models\Jenazah;
 use App\Models\Lokasi;
+use App\Models\RawatBulanan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('landing/index');
+        return view('landing.index');
     }
 
     public function location()
     {
-        return view('landing/location');
+        return view('landing.location');
     }
 
     public function register()
@@ -29,7 +30,36 @@ class HomeController extends Controller
         $bloks = Blok::all();
         $biayas = Biaya::all();
 
-        return view('landing/register', compact('bloks', 'biayas'));
+        return view('landing.register', compact('bloks', 'biayas'));
+    }
+
+    public function bulanan()
+    {
+        $blok = Blok::all();
+        $lokasi = Lokasi::all();
+
+        return view('landing.bulanan', compact('blok', 'lokasi'));
+    }
+
+    public function bulananSubmit(Request $request)
+    {
+        $data = [
+            'id_rawat' => RawatBulanan::generateId(),
+            'nama_jenazah' => $request->nama_jenazah,
+            'id_lokasi' => $request->id_lokasi,
+            'id_blok' => $request->id_blok,
+            'status' => 'belum',
+            'bukti_transfer' => '',
+        ];
+
+        if ($request->hasFile('transfer_proof')) {
+            $path = $request->file('transfer_proof')->store('transfer_proofs', 'public');
+            $data['bukti_transfer'] = $path;
+        }
+
+        RawatBulanan::create($data);
+
+        return redirect()->route('register')->with('success', 'Pembayaran berhasil!');
     }
 
     public function submit(Request $request)

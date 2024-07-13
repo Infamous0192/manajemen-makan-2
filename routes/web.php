@@ -22,6 +22,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/location', 'location');
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'submit')->name('register.submit');
+    Route::get('/bulanan', 'bulanan')->name('bulanan');
+    Route::post('/bulanan', 'bulananSubmit')->name('bulanan.submit');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
@@ -39,7 +41,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('proses_makam', Admin\ProsesMakamController::class)->parameter('proses_makam', 'proses_makam');
     Route::resource('rawat', Admin\RawatController::class)->parameter('rawat', 'rawat');
     Route::resource('pengeluaran', Admin\PengeluaranController::class)->parameter('pengeluaran', 'pengeluaran');
-    
+    Route::resource('rawatBulanan', Admin\RawatBulananController::class)->parameter('rawatBulanan', 'rawatBulanan');
+
     // Route::get('/rawat', 'index');
     // Route::get('/rawat/create', 'create');
     // Route::post('/rawat', 'store');
@@ -52,6 +55,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     // patch/put -> update data
     // delete -> delete data
 
+    Route::patch('rawatBulanan/{rawatBulanan}/confirm', [Admin\RawatBulananController::class, 'confirm'])->name('rawatBulanan.confirm');
     Route::patch('bayar/{bayar}/confirm', [Admin\BayarController::class, 'confirm'])->name('bayar.confirm');
 });
 

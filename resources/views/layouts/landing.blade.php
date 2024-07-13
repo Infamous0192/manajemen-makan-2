@@ -47,6 +47,9 @@
                         <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/bulanan">Rawat Bulanan</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
