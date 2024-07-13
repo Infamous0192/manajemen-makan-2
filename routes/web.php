@@ -38,6 +38,19 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('pekerja', Admin\PekerjaController::class)->parameter('pekerja', 'pekerja');
     Route::resource('proses_makam', Admin\ProsesMakamController::class)->parameter('proses_makam', 'proses_makam');
     Route::resource('rawat', Admin\RawatController::class)->parameter('rawat', 'rawat');
+    Route::resource('pengeluaran', Admin\PengeluaranController::class)->parameter('pengeluaran', 'pengeluaran');
+    
+    // Route::get('/rawat', 'index');
+    // Route::get('/rawat/create', 'create');
+    // Route::post('/rawat', 'store');
+    // Route::get('/rawat/:id/edit', 'edit');
+    // Route::put('/rawat/:id', 'update');
+    // Route::delete('/rawat/:id', 'delete');
+
+    // get -> ngambil, show data
+    // post -> create data
+    // patch/put -> update data
+    // delete -> delete data
 
     Route::patch('bayar/{bayar}/confirm', [Admin\BayarController::class, 'confirm'])->name('bayar.confirm');
 });

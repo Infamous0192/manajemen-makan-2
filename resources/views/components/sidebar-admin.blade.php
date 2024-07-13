@@ -55,6 +55,10 @@
                 <a class="nav-link" href="{{ route('admin.rawat.index') }}"><i class="fas fa-th-large"></i>
                     <span>Rawat</span></a>
             </li>
+            <li class="{{ Request::is('admin/pengeluaran*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.pengeluaran.index') }}"><i class="fas fa-th-large"></i>
+                    <span>Pengeluaran</span></a>
+            </li>
         </ul>
     </aside>
 </div>
