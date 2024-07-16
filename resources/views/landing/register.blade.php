@@ -142,7 +142,8 @@
                         <label for="blok">Pilih Blok</label>
                         <select class="form-control" id="blok" name="blok" required>
                             @foreach ($bloks as $blok)
-                                <option value="{{ $blok->id_blok }}">{{ $blok->nama_blok }}</option>
+                                <option value="{{ $blok->id_blok }}">{{ $blok->nama_blok }}
+                                    {{ count($blok->hargaMakam) > 0 ? '(Rp. ' . $blok->hargaMakam[0]->harga_makam . ')' : '' }}</option>
                             @endforeach
                         </select>
                     </div>
