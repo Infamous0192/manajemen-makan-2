@@ -33,7 +33,7 @@ class RawatController extends Controller
     {
         $id = Rawat::generateId();
         $jenazah = Jenazah::all()->map(function ($item, $key) {
-            return ['label' => $item->nama, 'value' => $item->id_daftar];
+            return ['label' => $item->nama, 'value' => $item->id_jenazah];
         });
 
         $lokasi = Lokasi::all()->map(function ($item, $key) {
@@ -80,7 +80,7 @@ class RawatController extends Controller
     public function edit(Rawat $rawat)
     {
         $jenazah = Jenazah::all()->map(function ($item, $key) {
-            return ['label' => $item->nama, 'value' => $item->id_daftar];
+            return ['label' => $item->nama, 'value' => $item->id_jenazah];
         });
 
         $lokasi = Lokasi::all()->map(function ($item, $key) {
