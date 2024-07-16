@@ -105,6 +105,13 @@
                                                                     class="btn btn-sm btn-primary">Konfirmasi</button>
                                                             </form>
                                                         @endif
+                                                        <form
+                                                            action="{{ route('admin.bayar.destroy', $data->id_rawat) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
