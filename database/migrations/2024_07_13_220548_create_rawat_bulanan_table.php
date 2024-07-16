@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('id_lokasi');
             $table->string('id_blok');
             $table->string('status');
+            $table->date('tanggal');
             $table->string('bukti_transfer')->nullable(); // New column for file upload
 
             $table->foreign('id_lokasi')->references('id_lokasi')->on('lokasi')->cascadeOnDelete();

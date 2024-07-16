@@ -50,6 +50,7 @@ class HomeController extends Controller
             'id_blok' => $request->id_blok,
             'status' => 'belum',
             'bukti_transfer' => '',
+            'tanggal' => date('Y-m-d')
         ];
 
         if ($request->hasFile('transfer_proof')) {

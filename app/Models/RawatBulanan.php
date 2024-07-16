@@ -24,6 +24,7 @@ class RawatBulanan extends Model
         'id_lokasi',
         'status',
         'bukti_transfer',
+        'tanggal',
     ];
 
     public static function generateId()

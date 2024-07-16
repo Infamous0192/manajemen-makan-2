@@ -37,11 +37,11 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center justify-content-between">
                                 <h4>Data Rawat Bulanan</h4>
-                                <a href="{{ route('admin.rawatBulanan.create') }}">
+                                {{-- <a href="{{ route('admin.rawatBulanan.create') }}">
                                     <button class="btn btn-sm btn-primary rounded-sm">
                                         Tambah
                                     </button>
-                                </a>
+                                </a> --}}
                             </div>
 
                             <div class="card-body">
@@ -54,6 +54,7 @@
                                                 <th>ID Lokasi</th>
                                                 <th>ID Blok</th>
                                                 <th>Status</th>
+                                                <th>Tanggal</th>
                                                 <th>Bukti Bayar</th>
                                                 <th>Action</th>
                                             </tr>
@@ -76,6 +77,7 @@
                                                             </div>
                                                         @endif
                                                     </td>
+                                                    <td>{{ $data->tanggal }}</td>
                                                     <td>
                                                         @if ($data->bukti_transfer)
                                                             <a href="{{ Storage::url($data->bukti_transfer) }}"
