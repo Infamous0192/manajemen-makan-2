@@ -31,7 +31,7 @@ class DaftarController extends Controller
     {
         $id = Daftar::generateId();
         $jenazah = Jenazah::all()->map(function ($item, $key) {
-            return ['label' => $item->nama, 'value' => $item->id_daftar];
+            return ['label' => $item->nama, 'value' => $item->jenazah];
         });
         return view('admin.daftar.create', compact('id', 'jenazah'));
     }
@@ -70,7 +70,7 @@ class DaftarController extends Controller
     public function edit(Daftar $daftar)
     {
         $jenazah = Jenazah::all()->map(function ($item, $key) {
-            return ['label' => $item->nama, 'value' => $item->id_daftar];
+            return ['label' => $item->nama, 'value' => $item->id_jenazah];
         });
         return view('admin.daftar.edit', compact('daftar', 'jenazah'));
     }

@@ -37,11 +37,11 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center justify-content-between">
                                 <h4>Data Daftar</h4>
-                                <a href="{{ route('admin.daftar.create') }}">
+                                {{-- <a href="{{ route('admin.daftar.create') }}">
                                     <button class="btn btn-sm btn-primary rounded-sm">
                                         Tambah
                                     </button>
-                                </a>
+                                </a> --}}
                             </div>
 
                             <div class="card-body">
