@@ -11,6 +11,7 @@ use App\Models\Jenazah;
 use App\Models\Lokasi;
 use App\Models\Biaya;
 use App\Models\HargaMakam;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class BayarController extends Controller
@@ -143,6 +144,14 @@ class BayarController extends Controller
     public function confirm(Bayar $bayar)
     {
         $bayar->update(['status' => 'terbayar']);
+
+        Transaksi::create([
+            'judul' => 'Pembayaran ' . $bayar->id_bayar,
+            'keterangan' => '-',
+            'jenis' => 'pemasukan',
+            'jumlah' => $bayar->jumlah,
+            'tanggal' => $bayar->tanggal_bayar,
+        ]);
 
         return redirect()->route('admin.bayar.index')->with('success', 'Bayar updated successfully.');
     }
