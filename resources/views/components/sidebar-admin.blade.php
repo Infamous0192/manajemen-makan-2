@@ -55,13 +55,17 @@
                 <a class="nav-link" href="{{ route('admin.rawat.index') }}"><i class="fas fa-th-large"></i>
                     <span>Rawat</span></a>
             </li>
-            <li class="{{ Request::is('admin/pengeluaran*') ? 'active' : '' }}">
+            {{-- <li class="{{ Request::is('admin/pengeluaran*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.pengeluaran.index') }}"><i class="fas fa-th-large"></i>
                     <span>Pengeluaran</span></a>
-            </li>
+            </li> --}}
             <li class="{{ Request::is('admin/rawatBulanan*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.rawatBulanan.index') }}"><i class="fas fa-th-large"></i>
                     <span>Rawat Bulanan</span></a>
+            </li>
+            <li class="{{ Request::is('admin/transaksi*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.transaksi.index') }}"><i class="fas fa-th-large"></i>
+                    <span>Transaksi</span></a>
             </li>
         </ul>
     </aside>

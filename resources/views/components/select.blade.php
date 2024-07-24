@@ -13,7 +13,7 @@
     @endif
 
     <select id="{{ $name }}" class="form-control @error($name) is-invalid @enderror" name="{{ $name }}"
-        value="{{ old($name, $value) }}" placeholder="{{ $placeholder }}" {{ $required=='true' ? 'required' : '' }}>
+        value="{{ old($name, $value) }}" placeholder="{{ $placeholder }}" {{ $required=='true' ? 'required' : '' }} {{ $attributes }}>
         <option value="" {{ old($name, $value)=='' ? 'selected' : '' }}>{{ $placeholder }}</option>
         @foreach ($data as $item)
         <option value="{{ $item['value'] }}" {{ old($name, $value)==$item['value'] ? 'selected' : '' }}>{{

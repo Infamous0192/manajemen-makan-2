@@ -42,6 +42,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('rawat', Admin\RawatController::class)->parameter('rawat', 'rawat');
     Route::resource('pengeluaran', Admin\PengeluaranController::class)->parameter('pengeluaran', 'pengeluaran');
     Route::resource('rawatBulanan', Admin\RawatBulananController::class)->parameter('rawatBulanan', 'rawatBulanan');
+    Route::resource('transaksi', Admin\TransaksiController::class)->parameter('transaksi', 'transaksi');
 
     // Route::get('/rawat', 'index');
     // Route::get('/rawat/create', 'create');
