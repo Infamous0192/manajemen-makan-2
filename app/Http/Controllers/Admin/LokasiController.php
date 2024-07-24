@@ -44,6 +44,12 @@ class LokasiController extends Controller
      */
     public function store(CreateLokasiRequest $request)
     {
+        $count = Lokasi::count();
+
+        if ($count >= 137) {
+            return redirect()->back()->with('error', 'Lokasi tidak bisa melebihi 137.');
+        }
+
         $data = $request->all();
         $data['id_lokasi'] = Lokasi::generateId();
         Lokasi::create($data);

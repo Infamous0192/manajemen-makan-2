@@ -30,8 +30,8 @@ class BlokController extends Controller
     public function create()
     {
         $id = Blok::generateId();
-        
-        return view('admin.blok.create', compact('id', ));
+
+        return view('admin.blok.create', compact('id',));
     }
 
     /**
@@ -42,6 +42,12 @@ class BlokController extends Controller
      */
     public function store(CreateBlokRequest $request)
     {
+        $count = Blok::count();
+
+        if ($count >= 137) {
+            return redirect()->back()->with('error', 'Blok tidak bisa melebihi 137.');
+        }
+
         $data = $request->all();
         $data['id_blok'] = Blok::generateId();
         Blok::create($data);
@@ -67,8 +73,8 @@ class BlokController extends Controller
      */
     public function edit(Blok $blok)
     {
-        
-        return view('admin.blok.edit', compact('blok', ));
+
+        return view('admin.blok.edit', compact('blok',));
     }
 
     /**
